@@ -6,6 +6,8 @@ import emailjs from '@emailjs/browser'
 import AnimatedLetters from '../AnimatedLetters'
 import './index.scss'
 
+
+
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate')
   const form = useRef()
@@ -25,7 +27,7 @@ const Contact = () => {
     e.preventDefault();
   
     emailjs
-      .sendForm('service_r98wtod', 'template_s178thn', form.current, 'v4VS_0caeeMBiHdQA')
+      .sendForm( process.env.REACT_APP_SERVICE_ID,  process.env.REACT_APP_TEMPLATE_ID, form.current, process.env.REACT_APP_EMAIL_API_KEY)
       .then(
         () => {
           alert('Message successfully sent!');
